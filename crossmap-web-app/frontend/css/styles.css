@@ -1,0 +1,81 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.toolbar {
+    display: flex;
+    background: #333;
+    color: #fff;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toolbar .logo {
+    font-size: 1.5rem;
+}
+
+.toolbar .controls {
+    display: flex;
+    gap: 10px;
+}
+
+#canvas-container {
+    position: relative;
+    width: calc(100% - 200px); /* Make space for the left panel */
+    height: calc(100% - 50px);
+    overflow: auto;
+    background: #f0f0f0;
+    left: 200px;
+    top: 50px;
+    position: absolute;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 0 0;
+}
+
+.left-panel {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 200px;
+    height: calc(100% - 50px);
+    background: #ddd;
+    overflow-y: auto;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tools-panel, .view-panel, .layers-panel {
+    background: #eee;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}
+
+.tools-panel h3, .view-panel h3, .layers-panel h3 {
+    margin-top: 0;
+}
+
+.slider-container {
+    margin-bottom: 20px;
+}
+
+.slider-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.slider-container input {
+    width: 100%;
+}
