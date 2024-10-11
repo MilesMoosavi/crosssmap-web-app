@@ -13,8 +13,8 @@
             <div class="dropdown">
                 <button class="dropbtn">File</button>
                 <div class="dropdown-content">
-                    <button>New Project</button>
-                    <button>Open File</button>
+                    <button id="new-project">New Project</button>
+                    <button id="open-file">Open File</button>
                     <button>Save</button>
                     <button>Load</button>
                 </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="view-panel">
                 <h3>View</h3>
-                <label><input type="checkbox"> Show grid lines</label>
+                <label><input type="checkbox"> Show grid</label>
             </div>
             <div class="layers-panel">
                 <h3>Layers</h3>
@@ -61,14 +61,14 @@
                 <button>↓</button>
             </div>
         </aside>
-        <div id="canvas-container">
-            <canvas id="canvas"></canvas>
-            <div class="node-icon" id="node-icon"></div>
-            <div class="zoom-control">
-                <span class="zoom-icon">🔍-</span>
-                <input type="range" id="zoom-slider" min="50" max="200" value="100">
-                <span class="zoom-icon">🔍+</span>
-                <span id="zoom-percentage">100%</span>
+        <div class="tab-container">
+            <div class="tab-bar">
+                <button class="tab-button" id="add-tab">+</button>
+            </div>
+            <div class="no-file-message">
+                <p>No File Active</p>
+                <button id="open-file-main">Open File</button>
+                <p>(Or drag and drop your own)</p>
             </div>
         </div>
     </main>
