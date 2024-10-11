@@ -17,6 +17,6 @@ The app is being developed to optimize node placements (e.g., Wi-Fi hotspots) us
 
 ### Example of Node Placement
 
-The screenshot below demonstrates how the user can place nodes on the map, adjusting their radius to suit different needs. Each red circle represents a node placed on the map, with a blue marker represents the mouse cursor.
+The screenshot below demonstrates how the user can place nodes on the map, adjusting their radius to suit different needs. Each red circle represents a node placed on the map, with a blue marker representing the mouse cursor.
 
 ![Node Placement Demo](images/demo-1.png)
