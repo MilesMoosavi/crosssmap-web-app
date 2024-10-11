@@ -3,63 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crossmap Web App</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Crossmap</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="top-navigation-bar">
+    <header class="toolbar">
         <div class="logo">Crossmap</div>
-        <div class="nav-controls">
-            <button id="new-project">New Project</button>
-            <button id="save-project">Save</button>
-            <button id="load-project">Load</button>
-            <button id="undo"><i class="fas fa-undo"></i> Undo</button>
-            <button id="redo"><i class="fas fa-redo"></i> Redo</button>
-            <input type="file" id="open-file" accept=".png, .jpg, .svg" style="display:none;">
-            <button id="open-file-button">Open File</button>
-            <button id="zoom-in"><i class="fas fa-search-plus"></i></button>
-            <button id="zoom-out"><i class="fas fa-search-minus"></i></button>
-        </div>
-    </div>
-    <div id="canvas-container">
-        <canvas id="canvas" width="800" height="600"></canvas>
-    </div>
-    <div class="left-panel" style="display: none;">
-        <div class="tools-panel">
-            <h3>Tools</h3>
-            <button id="tool-line">Place Node</button>
-        </div>
-        <div class="view-panel">
-            <h3>View</h3>
-            <label><input type="checkbox" id="show-grid" checked> Show grid</label><br>
-        </div>
-        <div class="layers-panel">
-            <h3>Layers</h3>
-            <div id="layers-list">
-                <div class="layer">
-                    <input type="checkbox" checked> Layer 1
+        <nav class="nav-controls">
+            <div class="dropdown">
+                <button class="dropbtn">File</button>
+                <div class="dropdown-content">
+                    <button>New Project</button>
+                    <button>Open File</button>
+                    <button>Save</button>
+                    <button>Load</button>
                 </div>
             </div>
-            <button id="add-layer">+</button>
-            <button id="remove-layer">-</button>
-            <button id="move-layer-up">&#8593;</button>
-            <button id="move-layer-down">&#8595;</button>
+            <div class="dropdown">
+                <button class="dropbtn">Edit</button>
+                <div class="dropdown-content">
+                    <button>Undo</button>
+                    <button>Redo</button>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">View</button>
+                <div class="dropdown-content">
+                    <button>Placeholder 1</button>
+                    <button>Placeholder 2</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <aside class="left-panel">
+            <div class="tools-panel">
+                <h3>Tools</h3>
+                <button id="place-node" class="toggle-button">Place Node</button>
+                <div class="radius-control">
+                    <label for="node-radius">Radius:</label>
+                    <input type="number" id="node-radius" value="7" disabled>
+                </div>
+            </div>
+            <div class="view-panel">
+                <h3>View</h3>
+                <label><input type="checkbox"> Show grid lines</label>
+            </div>
+            <div class="layers-panel">
+                <h3>Layers</h3>
+                <div id="layers-list">
+                    <div class="layer">Layer 1</div>
+                </div>
+                <button>+</button>
+                <button>-</button>
+                <button>↑</button>
+                <button>↓</button>
+            </div>
+        </aside>
+        <div id="canvas-container">
+            <canvas id="canvas"></canvas>
+            <div class="node-icon" id="node-icon"></div>
+            <div class="zoom-control">
+                <span class="zoom-icon">🔍-</span>
+                <input type="range" id="zoom-slider" min="50" max="200" value="100">
+                <span class="zoom-icon">🔍+</span>
+                <span id="zoom-percentage">100%</span>
+            </div>
         </div>
-    </div>
+    </main>
+
     <script src="js/script.js"></script>
-    <script>
-        const openFileInput = document.getElementById('open-file');
-        const openFileButton = document.getElementById('open-file-button');
-        const leftPanel = document.querySelector('.left-panel');
-
-        openFileButton.addEventListener('click', () => {
-            openFileInput.click();
-        });
-
-        openFileInput.addEventListener('change', () => {
-            leftPanel.style.display = 'block';
-        });
-    </script>
 </body>
 </html>

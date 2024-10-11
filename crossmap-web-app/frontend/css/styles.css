@@ -1,8 +1,8 @@
 body, html {
     margin: 0;
     padding: 0;
-    overflow: hidden;
     height: 100%;
+    overflow: hidden;
 }
 
 .toolbar {
@@ -18,20 +18,31 @@ body, html {
     font-size: 1.5rem;
 }
 
-.toolbar .controls {
+.nav-controls {
     display: flex;
-    gap: 10px;
+}
+
+main {
+    display: flex;
+    height: calc(100vh - 50px); /* Adjust for toolbar height */
+}
+
+.left-panel {
+    width: 200px;
+    background: #ddd;
+    padding: 10px;
+    box-sizing: border-box;
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
 }
 
 #canvas-container {
+    flex-grow: 1;
     position: relative;
-    width: calc(100% - 200px); /* Make space for the left panel */
-    height: calc(100% - 50px);
     overflow: auto;
     background: #f0f0f0;
-    left: 200px;
-    top: 50px;
-    position: absolute;
 }
 
 #canvas {
@@ -41,41 +52,127 @@ body, html {
     transform-origin: 0 0;
 }
 
-.left-panel {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 200px;
-    height: calc(100% - 50px);
-    background: #ddd;
-    overflow-y: auto;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
+/* Tools panel */
 
 .tools-panel, .view-panel, .layers-panel {
     background: #eee;
     padding: 10px;
-    margin-bottom: 10px;
     border-radius: 4px;
 }
 
-.tools-panel h3, .view-panel h3, .layers-panel h3 {
-    margin-top: 0;
+.toggle-button.active {
+    background-color: #007bff;
+    color: white;
 }
 
-.slider-container {
-    margin-bottom: 20px;
+.radius-control {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
 }
 
-.slider-container label {
+.radius-control label {
+    margin-right: 5px;
+}
+
+#node-radius {
+    width: 40px;
+    text-align: center;
+}
+
+#node-radius:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* Menubar styling */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover {
+    background-color: #555;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
     display: block;
-    margin-bottom: 5px;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-.slider-container input {
-    width: 100%;
+.dropdown-content button:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* "Place Node" button */
+#place-node.active {
+    background-color: #4CAF50; /* Green background when active */
+    color: white;
+}
+
+#canvas-container {
+    position: relative;
+}
+
+#canvas-container .node-icon {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px dotted #4CAF50;
+    border-radius: 50%;
+    pointer-events: none; /* Prevent the icon from interfering with mouse events */
+    display: none; /* Initially hidden */
+}
+
+.zoom-control {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.zoom-icon {
+    color: white;
+}
+
+#zoom-slider {
+    width: 100px;
+}
+
+#zoom-percentage {
+    color: white;
 }
